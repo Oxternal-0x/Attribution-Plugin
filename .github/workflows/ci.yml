@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Compile TypeScript
+      run: npm run compile
+    
+    - name: Check for compilation errors
+      run: |
+        if [ ! -f "out/extension.js" ]; then
+          echo "Compilation failed - extension.js not found"
+          exit 1
+        fi
+    
+    - name: Validate package.json
+      run: |
+        # Check if package.json is valid JSON
+        node -e "JSON.parse(require('fs').readFileSync('package.json', 'utf8'))"
+        
+        # Check required fields
+        node -e "
+          const pkg = JSON.parse(require('fs').readFileSync('package.json', 'utf8'));
+          const required = ['name', 'displayName', 'version', 'engines', 'main', 'contributes'];
+          const missing = required.filter(field => !pkg[field]);
+          if (missing.length > 0) {
+            console.error('Missing required fields:', missing);
+            process.exit(1);
+          }
+        "
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: extension-build-${{ matrix.node-version }}
+        path: out/
+        retention-days: 7 
