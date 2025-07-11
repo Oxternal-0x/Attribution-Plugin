@@ -1,0 +1,90 @@
+{
+  "name": "attribution",
+  "displayName": "Attribution",
+  "description": "Add configurable attribution text to the top of your files with a simple command",
+  "version": "1.0.0",
+  "publisher": "attribution-extension",
+  "license": "CC-BY-NC-SA-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/attribution-extension.git"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Productivity"
+  ],
+  "keywords": [
+    "attribution",
+    "header",
+    "comment",
+    "license",
+    "credit",
+    "author"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.addAttribution",
+        "title": "Add Attribution",
+        "category": "Attribution"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.addAttribution",
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.addAttribution",
+          "group": "1_modification",
+          "when": "editorTextFocus"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "extension.addAttribution"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Attribution",
+      "properties": {
+        "attribution.text": {
+          "type": "string",
+          "description": "The attribution text to be inserted at the top of files. Supports markdown-style formatting.",
+          "default": "// Attributed to: Your Name",
+          "pattern": "^.+$",
+          "patternErrorMessage": "Attribution text cannot be empty"
+        },
+        "attribution.showNotifications": {
+          "type": "boolean",
+          "description": "Show success/error notifications when adding attribution",
+          "default": true
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4"
+  },
+  "icon": "images/icon.png"
+} 
