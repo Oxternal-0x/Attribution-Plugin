@@ -29,4 +29,4 @@ If applicable, add screenshots to help explain your problem.
  - Extension Version: [e.g. 1.0.0]
 
 **Additional context**
-Add any other context about the problem here. 
+Add any other context about the problem here.
