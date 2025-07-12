@@ -33,7 +33,7 @@ A Visual Studio Code extension that allows you to add configurable attribution t
 - Open VS Code Settings (`Ctrl/Cmd + ,`)
 - Search for "Attribution"
 - Set your desired attribution text in the "Attribution: Text" field
-- **Default**: `// Attributed to: Your Name`
+- **Default**: `// Created by: Your Name`
 
 ### Notifications
 - Toggle success/error notifications on/off
@@ -42,7 +42,7 @@ A Visual Studio Code extension that allows you to add configurable attribution t
 ### Example Settings
 ```json
 {
-  "attribution.text": "// Copyright (c) 2024 Your Name - All rights reserved",
+  "attribution.text": "// Created by: Your Name",
   "attribution.showNotifications": true
 }
 ```

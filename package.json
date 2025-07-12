@@ -62,7 +62,7 @@
         "attribution.text": {
           "type": "string",
           "description": "The attribution text to be inserted at the top of files. Supports markdown-style formatting.",
-          "default": "// Attributed to: Your Name",
+          "default": "// Created by: Your Name",
           "pattern": "^.+$",
           "patternErrorMessage": "Attribution text cannot be empty"
         },
