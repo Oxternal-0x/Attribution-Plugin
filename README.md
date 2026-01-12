@@ -1,5 +1,7 @@
 # Attribution VS Code Extension
 
+"In my 17+ years of glassblowing, the Attribution of a piece was its soul—it proved who handled the heat. I built this extension to bring that same integrity to the digital canvas."
+
 A Visual Studio Code extension that allows you to add configurable attribution text to the top of your files with enhanced features and optimizations.
 
 ## ✨ Features
@@ -80,7 +82,7 @@ Attribution-Plugin/
 ## 🔧 Technical Details
 
 ### Optimizations Implemented
-- **Modular Code Structure** - Separated concerns into focused functions
+- **Modular Code Structure** - Designed for easy onboarding of new contributors/apprentices
 - **Type Safety** - Full TypeScript implementation with strict typing
 - **Error Handling** - Comprehensive error handling with user feedback
 - **Performance** - Efficient text insertion with proper validation
